@@ -3,41 +3,64 @@ import { DownloadCard } from '../components/DownloadCard'
 import { PlatformCard } from '../components/PlatformCard'
 import { SectionHeading } from '../components/SectionHeading'
 import { TestimonialCard } from '../components/TestimonialCard'
-import { downloads, faqs, platforms, sections, testimonials, topics } from '../data/mediaKitContent'
+import { books, downloads, faqs, journeyPlatforms, mediaAppearances, sections, showItems, testimonials, topics } from '../data/mediaKitContent'
+import type { SectionContent } from '../types/content'
 
-export function AboutAndMessage() {
-  return (
-    <section className="split-section section" id={sections.about.id}>
-      <SectionHeading {...sections.about} />
-      <div className="split-section__body"><p>{sections.about.description}</p><aside><p className="eyebrow">{sections.message.eyebrow}</p><blockquote>“{sections.message.title}”</blockquote></aside></div>
-    </section>
-  )
+function SectionIntro({ content, align }: { content: SectionContent; align?: 'left' | 'center' }) {
+  return <><SectionHeading {...content} align={align} />{content.ctas && <CTAGroup actions={content.ctas} />}</>
 }
 
-export function TopicsAndPlatforms() {
-  return <>
-    <section className="section section--navy" id={sections.topics.id}><SectionHeading {...sections.topics} /><div className="card-grid">{topics.map((item, i) => <PlatformCard key={i} {...item} />)}</div></section>
-    <section className="section" id={sections.show.id}><SectionHeading eyebrow="Platforms & Publishing" title="Approved Platform Information Required" description="Approved Platform Overview Required" /><div className="card-grid">{platforms.map((item, i) => <PlatformCard key={i} {...item} />)}</div></section>
-  </>
+export function About() {
+  const content = sections.about
+  return <section className="section" id={content.id} data-purpose={content.purpose}><SectionIntro content={content} /></section>
 }
 
-export function MediaAndTestimonials() {
-  return <>
-    <section className="media-banner section" id={sections.media.id}><SectionHeading {...sections.media} /><div className="media-placeholder">Approved Media Appearance Visual Required</div></section>
-    <section className="section section--soft" id={sections.testimonials.id}><SectionHeading {...sections.testimonials} align="center" /><div className="testimonial-grid">{testimonials.map((item, i) => <TestimonialCard key={i} {...item} />)}</div></section>
-  </>
+export function SignatureMessage() {
+  const content = sections.message
+  return <section className="section philosophy" id={content.id} data-purpose={content.purpose}><SectionIntro content={content} align="center" /></section>
 }
 
-export function DownloadsAndBooking() {
-  return <>
-    <section className="section" id={sections.downloads.id}><SectionHeading {...sections.downloads} /><div className="download-list">{downloads.map((item) => <DownloadCard key={item.title} {...item} />)}</div></section>
-    <section className="booking section" id={sections.booking.id}><div><SectionHeading {...sections.booking} /><CTAGroup primaryHref="mailto:placeholder@example.com" primaryLabel="Approved Contact Required" secondaryHref="#faq" secondaryLabel="Review FAQ" /></div><div className="booking__mark" aria-hidden="true">CJ</div></section>
-  </>
+export function Topics() {
+  const content = sections.topics
+  return <section className="section section--navy" id={content.id} data-purpose={content.purpose}><SectionIntro content={content} /><div className="card-grid">{topics.map((item, index) => <PlatformCard key={index} {...item} />)}</div></section>
 }
 
-export function FAQAndJourney() {
-  return <>
-    <section className="section faq" id={sections.faq.id}><SectionHeading {...sections.faq} />{faqs.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</section>
-    <section className="journey section" id={sections.journey.id}><SectionHeading {...sections.journey} align="center" /><CTAGroup primaryHref="#top" primaryLabel="Return to Top" /></section>
-  </>
+export function Show() {
+  const content = sections.show
+  return <section className="section" id={content.id} data-purpose={content.purpose}><SectionIntro content={content} /><div className="card-grid card-grid--single">{showItems.map((item) => <PlatformCard key={item.title} {...item} />)}</div></section>
+}
+
+export function Books() {
+  const content = sections.books
+  return <section className="section section--soft" id={content.id} data-purpose={content.purpose}><SectionIntro content={content} /><div className="card-grid card-grid--single">{books.map((item) => <PlatformCard key={item.title} {...item} />)}</div></section>
+}
+
+export function MediaAppearances() {
+  const content = sections.media
+  return <section className="section" id={content.id} data-purpose={content.purpose}><SectionIntro content={content} /><div className="card-grid">{mediaAppearances.map((item, index) => <PlatformCard key={index} {...item} />)}</div></section>
+}
+
+export function Testimonials() {
+  const content = sections.testimonials
+  return <section className="section section--soft" id={content.id} data-purpose={content.purpose}><SectionIntro content={content} align="center" /><div className="testimonial-grid">{testimonials.map((item, index) => <TestimonialCard key={index} {...item} />)}</div></section>
+}
+
+export function MediaDownloads() {
+  const content = sections.downloads
+  return <section className="section" id={content.id} data-purpose={content.purpose}><SectionIntro content={content} /><div className="download-list">{downloads.map((item) => <DownloadCard key={item.title} {...item} />)}</div></section>
+}
+
+export function Booking() {
+  const content = sections.booking
+  return <section className="booking section" id={content.id} data-purpose={content.purpose}><div><SectionIntro content={content} /></div><div className="booking__mark" aria-hidden="true">CJ</div></section>
+}
+
+export function FAQ() {
+  const content = sections.faq
+  return <section className="section faq" id={content.id} data-purpose={content.purpose}><SectionIntro content={content} />{faqs.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</section>
+}
+
+export function ContinueJourney() {
+  const content = sections.journey
+  return <section className="journey section" id={content.id} data-purpose={content.purpose}><SectionIntro content={content} align="center" /><div className="card-grid">{journeyPlatforms.map((item, index) => <PlatformCard key={index} {...item} />)}</div></section>
 }
