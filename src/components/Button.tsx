@@ -12,7 +12,8 @@ type ButtonProps = NativeButtonProps | LinkProps
 export function Button(props: ButtonProps) {
   if ('href' in props && props.href) {
     const { children, variant = 'primary', ...linkProps } = props
-    return <a className={`button button--${variant}`} {...linkProps}>{children}</a>
+    const externalProps = linkProps.href?.startsWith('http') ? { target: '_blank', rel: 'noreferrer' } : {}
+    return <a className={`button button--${variant}`} {...externalProps} {...linkProps}>{children}</a>
   }
 
   const { children, variant = 'primary', ...buttonProps } = props as NativeButtonProps

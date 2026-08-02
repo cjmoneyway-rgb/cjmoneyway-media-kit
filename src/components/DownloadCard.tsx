@@ -1,12 +1,12 @@
 import type { ContentCard } from '../types/content'
 import { Button } from './Button'
 
-export function DownloadCard({ title, description, action }: ContentCard) {
+export function DownloadCard({ title, description, action, status }: ContentCard) {
   return (
-    <article className="download-card">
+    <article className="download-card" data-status={status}>
       <div className="download-card__icon" aria-hidden="true">↓</div>
       <div><h3>{title}</h3><p>{description}</p></div>
-      <Button type="button" variant="text" disabled>{action?.label ?? 'Approved Download Asset Required'}</Button>
+      {action?.href ? <Button href={action.href} variant="text">{action.label}</Button> : <Button type="button" variant="text" disabled aria-label={`${title}: ${action?.label ?? 'Asset Pending Approval'}`}>{action?.label ?? 'Asset Pending Approval'}</Button>}
     </article>
   )
 }

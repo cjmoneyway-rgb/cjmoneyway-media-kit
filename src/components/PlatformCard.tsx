@@ -8,7 +8,7 @@ export function PlatformCard({ eyebrow, title, description, action }: ContentCar
       <h3>{title}</h3>
       <p>{description}</p>
       {action?.href
-        ? <Button href={action.href} variant="text">{action.label}</Button>
+        ? <Button href={action.href} variant="text">{action.label}<span className="sr-only"> (opens in a new tab)</span></Button>
         : action && <Button type="button" variant="text" disabled>{action.label}</Button>}
       {!action && <span className="card-arrow" aria-hidden="true">↗</span>}
     </article>

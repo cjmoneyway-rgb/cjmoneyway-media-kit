@@ -1,7 +1,9 @@
+import { AssetPlaceholder } from '../components/AssetPlaceholder'
 import { Button } from '../components/Button'
+import { DownloadCard } from '../components/DownloadCard'
 import { PlatformCard } from '../components/PlatformCard'
 import { SectionHeading } from '../components/SectionHeading'
-import { authorityMetrics, conversionPathways, ecosystem, podcastRanking, principles, sections, showCopy, strategicRelationships, testimonialCategories, valueStatements, workAreas } from '../data/mediaKitContent'
+import { approvedLinks, authorityMetrics, conversionPathways, ecosystem, mediaDownloads, podcastRanking, principles, sections, showCopy, strategicRelationships, testimonialCategories, valueStatements, workAreas } from '../data/mediaKitContent'
 import type { SectionContent, TestimonialCategory } from '../types/content'
 
 function Intro({ content, align = 'left' }: { content: SectionContent; align?: 'left' | 'center' }) {
@@ -30,7 +32,7 @@ export function Authority() {
 
 export function Show() {
   const content = sections.show
-  return <section className="section show-section" id={content.id} data-status={content.status}><Intro content={content} /><div className="show-copy"><div><p>{showCopy.introduction}</p><p>{showCopy.impact}</p></div><div><h3>Why the platform matters</h3><ul className="check-list">{showCopy.roles.map((item) => <li key={item}>{item}</li>)}</ul></div></div><div className="tag-list" aria-label="Show themes">{showCopy.themes.map((theme) => <span key={theme}>{theme}</span>)}</div></section>
+  return <section className="section show-section" id={content.id} data-status={content.status}><Intro content={content} /><div className="show-brand-row"><AssetPlaceholder label="The CJ Moneyway Show™ logo" compact /><div className="cta-group"><Button href={approvedLinks.podcast}>Listen to the Podcast</Button><Button href={approvedLinks.bleav} variant="text">View on Bleav</Button></div></div><div className="show-copy"><div><p>{showCopy.introduction}</p><p>{showCopy.impact}</p></div><div><h3>Why the platform matters</h3><ul className="check-list">{showCopy.roles.map((item) => <li key={item}>{item}</li>)}</ul></div></div><div className="tag-list" aria-label="Show themes">{showCopy.themes.map((theme) => <span key={theme}>{theme}</span>)}</div></section>
 }
 
 export function Ranking() {
@@ -47,7 +49,7 @@ export function GuestTestimonials() { return <TestimonialSection category={testi
 
 export function Relationships() {
   const content = sections.relationships
-  return <section className="section relationships" id={content.id} data-status={content.status}><Intro content={content} /><div className="relationship-grid">{strategicRelationships.map((item) => <article key={item.name}><p className="eyebrow">{item.organization}</p><h3>{item.name}</h3><ul>{item.roles.map((role) => <li key={role}>{role}</li>)}</ul></article>)}</div><p className="section-note">Relationships shown are selective and do not imply sponsorship, ownership, employment, formal endorsement, agency representation, or client status.</p></section>
+  return <section className="section relationships" id={content.id} data-status={content.status}><Intro content={content} /><div className="relationship-grid">{strategicRelationships.map((item) => <article key={item.name}><AssetPlaceholder label={`${item.name} relationship asset`} compact /><p className="eyebrow">{item.organization}</p><h3>{item.name}</h3><ul>{item.roles.map((role) => <li key={role}>{role}</li>)}</ul></article>)}</div><p className="section-note">Relationships shown are selective and do not imply sponsorship, ownership, employment, formal endorsement, agency representation, or client status.</p></section>
 }
 
 export function Value() {
@@ -57,10 +59,10 @@ export function Value() {
 
 export function NextStep() {
   const content = sections.nextStep
-  return <section className="section next-step" id={content.id} data-status={content.status}><Intro content={content} align="center" /><div className="card-grid card-grid--two">{conversionPathways.map((item) => <PlatformCard key={item.title} {...item} />)}</div></section>
+  return <section className="section next-step" id={content.id} data-status={content.status}><Intro content={content} align="center" /><div className="card-grid card-grid--two">{conversionPathways.map((item) => <PlatformCard key={item.title} {...item} />)}</div><div className="media-downloads" aria-labelledby="media-downloads-title"><header><p className="eyebrow">Press &amp; Media</p><h3 id="media-downloads-title">Media Downloads</h3><p>Approved resources will become available here as production assets are supplied.</p></header><div className="download-list">{mediaDownloads.map((item) => <DownloadCard key={item.title} {...item} />)}</div></div></section>
 }
 
 export function FinalCTA() {
   const content = sections.finalCta
-  return <section className="section final-cta" id={content.id} data-status={content.status}><Intro content={content} align="center" /><div className="cta-group"><Button type="button" disabled>Approved Booking Link Required</Button><Button href="#ecosystem" variant="secondary">Explore CJ Moneyway Media™</Button></div></section>
+  return <section className="section final-cta" id={content.id} data-status={content.status}><Intro content={content} align="center" /><div className="cta-group"><Button href={approvedLinks.calendly}>Work With CJ</Button><Button href={approvedLinks.website} variant="secondary">Explore CJ Moneyway Media™</Button></div></section>
 }
