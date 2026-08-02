@@ -1,4 +1,11 @@
-import type { AuthorityMetric, ContentCard, ConversionPathway, EcosystemPlatform, HeroContent, LinkItem, PodcastRanking, SectionContent, StrategicRelationship, TestimonialCategory } from '../types/content'
+import type { AuthorityMetric, ContentCard, ConversionPathway, EcosystemPlatform, HeroContent, LinkItem, MediaDownload, PodcastRanking, SectionContent, StrategicRelationship, TestimonialCategory } from '../types/content'
+
+export const approvedLinks = {
+  website: 'https://cjmoneyway.com', podcast: 'https://pod.link/1707761906', bleav: 'https://bleav.com/shows/the-cj-moneyway-show/',
+  calendly: 'https://calendly.com/cj-cjmoneywayshow/60min', oneSheet: 'https://cjmoneyway-mmcwhn8g.manus.space', speakerHub: 'https://speakerhub.com/speaker/corwin-johnson-1',
+  substack: 'https://substack.com/@cjmoneyway?r=3vvrmy&utm_medium=ios&utm_source=profile', youtube: 'https://www.youtube.com/@themoneywayshow8493',
+  instagram: 'https://instagram.com/c.j_moneyway', linkedin: 'https://www.linkedin.com/in/corwin-johnson-3b7b51aa', tiktok: 'https://www.tiktok.com/@cjmoneyway', x: 'https://x.com/cj_moneyway',
+} as const
 
 export const navigation: LinkItem[] = [
   { label: 'About', href: '#hero' }, { label: 'Philosophy', href: '#represents' },
@@ -14,7 +21,7 @@ export const hero: HeroContent = {
   supportingCopy: 'CJ Moneyway helps leaders, creators, entrepreneurs, organizations, and communities combine timeless principles, meaningful relationships, and modern tools to build transformational results.',
   identityMarkers: ['Founder & CEO — CJ Moneyway Media™', 'Host — The CJ Moneyway Show™', 'Author', 'Speaker', 'Builder of Mission Control OS™'],
   imageLabel: 'Approved CJ Portrait Required', status: 'approved',
-  ctas: [{ label: 'Work With CJ', href: '#next-step', status: 'approved' }, { label: 'Explore CJ Moneyway Media™', href: '#ecosystem', status: 'approved' }],
+  ctas: [{ label: 'Work With CJ', href: approvedLinks.calendly, status: 'approved', external: true }, { label: 'Explore CJ Moneyway Media™', href: approvedLinks.website, status: 'approved', external: true }],
 }
 
 export const sections = {
@@ -68,22 +75,30 @@ export const podcastRanking: PodcastRanking = {
 }
 
 export const testimonialCategories: TestimonialCategory[] = [
-  { id: 'host-testimonials', eyebrow: 'CJ as a Guest', title: 'What Hosts Say About CJ', description: 'Feedback from podcast hosts who interviewed CJ on their programs.', sources: ['The 9–5 Exit Plan', "Talk with Faith-J’s Podcast", 'Mind Over Habit', 'Unwrapped with Gift', 'Liquor Talk'], themes: ['Authenticity', 'Storytelling', 'Faith', 'Leadership', 'Entrepreneurship', 'Discipline', 'Practical wisdom', 'Relatability', 'Personal growth', 'Audience impact', 'Legacy', 'Professionalism'], quotePlaceholder: 'Approved host quotation and attribution required.', status: 'placeholder' },
-  { id: 'guest-testimonials', eyebrow: 'CJ as a Host', title: 'What Guests Say About The CJ Moneyway Show™', description: "Feedback about guests' experience with CJ as a host, interviewer, storyteller, conversation facilitator, and media creator.", sources: [], themes: ['Insightful questions', 'Authentic conversation', 'Guest comfort', 'Professionalism', 'Deeper storytelling', 'Educational value', 'Natural conversation', 'Faith', 'Leadership', 'Purpose', 'Amplifying overlooked voices'], quotePlaceholder: 'Approved guest quotation and attribution required.', status: 'placeholder' },
+  { id: 'host-testimonials', purpose: 'Preserve approved host feedback separately from show guest feedback.', eyebrow: 'CJ as a Guest', title: 'What Hosts Say About CJ', description: 'Feedback from podcast hosts who interviewed CJ on their programs.', sources: ['The 9–5 Exit Plan', "Talk with Faith-J’s Podcast", 'Mind Over Habit', 'Unwrapped with Gift', 'Liquor Talk'], themes: ['Authenticity', 'Storytelling', 'Faith', 'Leadership', 'Entrepreneurship', 'Discipline', 'Practical wisdom', 'Relatability', 'Personal growth', 'Audience impact', 'Legacy', 'Professionalism'], quotePlaceholder: 'Approved host quotation and attribution required.', status: 'placeholder' },
+  { id: 'guest-testimonials', purpose: 'Preserve approved show guest feedback separately from host feedback.', eyebrow: 'CJ as a Host', title: 'What Guests Say About The CJ Moneyway Show™', description: "Feedback about guests' experience with CJ as a host, interviewer, storyteller, conversation facilitator, and media creator.", sources: [], themes: ['Insightful questions', 'Authentic conversation', 'Guest comfort', 'Professionalism', 'Deeper storytelling', 'Educational value', 'Natural conversation', 'Faith', 'Leadership', 'Purpose', 'Amplifying overlooked voices'], quotePlaceholder: 'Approved guest quotation and attribution required.', status: 'placeholder' },
 ]
 
 export const strategicRelationships: StrategicRelationship[] = [
-  { name: 'Marques Ogden', organization: 'Ogden Ventures, LLC', roles: ['Mentor', 'Coach', 'Collaborator'], status: 'approved' },
-  { name: 'Stephen Seidel', organization: 'The Seidel Agency', roles: ['Strategic Partner', 'Brand Building', 'TEDx Preparation', 'Collaboration'], status: 'approved' },
+  { name: 'Marques Ogden', organization: 'Ogden Ventures, LLC', roles: ['Mentor', 'Coach', 'Collaborator'], status: 'approved', assetStatus: 'placeholder' },
+  { name: 'Stephen Seidel', organization: 'The Seidel Agency', roles: ['Strategic Partner', 'Brand Building', 'TEDx Preparation', 'Collaboration'], status: 'approved', assetStatus: 'placeholder' },
 ]
 
 export const valueStatements = ['Conversations become opportunities.', 'Ideas become systems.', 'Relationships become strategic assets.', 'Timeless principles meet modern tools.']
 
 export const conversionPathways: ConversionPathway[] = [
-  ['Book CJ to Speak', 'Bring purpose-led leadership, storytelling, resilience, and practical transformation to your audience.', 'Approved Booking Link Required'],
-  ['Listen to The CJ Moneyway Show™', 'Explore meaningful conversations designed to create impact beyond the episode.', 'Approved Show Link Required'],
+  ['Book CJ to Speak', 'Bring purpose-led leadership, storytelling, resilience, and practical transformation to your audience.', 'View Speaking One-Sheet', approvedLinks.oneSheet],
+  ['Listen to The CJ Moneyway Show™', 'Explore meaningful conversations designed to create impact beyond the episode.', 'Listen to the Podcast', approvedLinks.podcast],
   ['Explore Moneyway Lab™', 'Discover practical AI education and modern enterprise tools rooted in timeless principles.', 'Approved Moneyway Lab™ Link Required'],
   ['Read Moneyway Journal™', 'Engage executive perspectives, transformational stories, and written thought leadership.', 'Approved Moneyway Journal™ Link Required'],
   ['Discover Books & Publishing', 'Explore books, intellectual property, and transformational publishing initiatives.', 'Approved Publishing Link Required'],
-  ['Partner With CJ Moneyway Media™', 'Begin a conversation about strategic collaboration and long-term enterprise value.', 'Approved Partnership Link Required'],
-].map(([title, description, label]) => ({ title, description, status: 'approved' as const, action: { label, status: 'placeholder' as const } }))
+  ['Partner With CJ Moneyway Media™', 'Begin a conversation about strategic collaboration and long-term enterprise value.', 'Work With CJ', approvedLinks.calendly],
+].map(([title, description, label, href]) => ({ title, description, status: 'approved' as const, action: { label, href, external: Boolean(href), status: href ? 'approved' as const : 'placeholder' as const } }))
+
+export const mediaDownloads: MediaDownload[] = [
+  ['Executive bio — short', 'Approved short executive biography.', 'Asset Pending Approval'], ['Executive bio — medium', 'Approved medium executive biography.', 'Asset Pending Approval'],
+  ['Executive bio — full', 'Approved full executive biography.', 'Asset Pending Approval'], ['Professional headshot', 'Approved high-resolution professional headshot.', 'Asset Pending Approval'],
+  ['CJ Moneyway Media™ logo', 'Approved production-ready brand logo.', 'Asset Pending Approval'], ['The CJ Moneyway Show™ logo', 'Approved production-ready show logo.', 'Asset Pending Approval'],
+  ['Speaking one-sheet', 'Approved online speaker overview.', 'View One-Sheet', approvedLinks.oneSheet], ['Media kit PDF', 'Approved downloadable executive media kit.', 'Coming Soon'],
+  ['Podcast artwork', 'Approved high-resolution podcast artwork.', 'Asset Pending Approval'], ['Brand usage guide', 'Approved logo and brand usage standards.', 'Asset Pending Approval'],
+].map(([title, description, label, href]) => ({ title, description, status: href ? 'approved' as const : 'placeholder' as const, action: { label, href, external: Boolean(href), status: href ? 'approved' as const : 'placeholder' as const } }))

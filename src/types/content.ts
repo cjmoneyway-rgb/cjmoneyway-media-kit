@@ -1,7 +1,7 @@
 export type ContentStatus = 'verified' | 'approved' | 'placeholder'
 
-export type LinkItem = { label: string; href: `#${string}` }
-export type CallToAction = { label: string; href?: `#${string}`; status: ContentStatus }
+export type LinkItem = { label: string; href: string }
+export type CallToAction = { label: string; href?: string; status: ContentStatus; external?: boolean }
 
 export type SectionContent = {
   id: string
@@ -29,7 +29,7 @@ export type ContentCard = {
 
 export type AuthorityMetric = { value: string; label: string; status: 'verified' }
 export type Metric = { value: string; label: string }
-export type Testimonial = { quote: string; attribution: string; role: string }
+export type Testimonial = { quote: string; name?: string; role?: string; organization?: string; sourceType: 'host' | 'guest'; status: ContentStatus; image?: string }
 
 export type EcosystemPlatform = {
   category: string
@@ -64,6 +64,8 @@ export type StrategicRelationship = {
   organization: string
   roles: string[]
   status: 'approved'
+  assetStatus: 'placeholder'
 }
 
 export type ConversionPathway = ContentCard & { action: CallToAction }
+export type MediaDownload = ContentCard & { action: CallToAction }
