@@ -3,7 +3,7 @@ import { Button } from './Button'
 
 export function PlatformCard({ eyebrow, title, description, action }: ContentCard) {
   return (
-    <article className="platform-card">
+    <article className="platform-card" data-status={action?.status ?? 'approved'}>
       {eyebrow && <p className="eyebrow">{eyebrow}</p>}
       <h3>{title}</h3>
       <p>{description}</p>
