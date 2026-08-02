@@ -49,6 +49,7 @@ export type PodcastRanking = {
 
 export type TestimonialCategory = {
   id: string
+  purpose: string
   eyebrow: string
   title: string
   description: string
