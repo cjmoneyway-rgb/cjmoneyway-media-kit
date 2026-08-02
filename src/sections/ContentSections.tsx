@@ -27,7 +27,7 @@ export function Ecosystem() {
 
 export function Authority() {
   const content = sections.authority
-  return <section className="section authority" id={content.id} data-status={content.status}><Intro content={content} /><div className="authority-grid">{authorityMetrics.map((metric) => <article key={metric.label}><strong>{metric.value}</strong><span>{metric.label}</span></article>)}</div></section>
+  return <section className="section authority" id={content.id} data-status={content.status}><SectionHeading eyebrow={content.eyebrow} title={content.title} /><div className="authority-grid">{authorityMetrics.map((metric) => <article key={metric.label}><strong>{metric.value}</strong><span>{metric.label}</span></article>)}</div></section>
 }
 
 export function Show() {
