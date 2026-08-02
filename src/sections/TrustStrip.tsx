@@ -1,6 +1,6 @@
 import { MetricCard } from '../components/MetricCard'
-import { metrics } from '../data/mediaKitContent'
+import { authorityMetrics } from '../data/mediaKitContent'
 
 export function TrustStrip() {
-  return <section className="trust-strip" aria-label="Credibility metric placeholders">{metrics.map((metric, index) => <MetricCard key={index} {...metric} />)}</section>
+  return <section className="trust-strip" aria-label="Verified authority metrics">{authorityMetrics.map((metric) => <MetricCard key={metric.label} {...metric} />)}</section>
 }

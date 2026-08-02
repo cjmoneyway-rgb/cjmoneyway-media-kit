@@ -1,7 +1,6 @@
-import { AboutAndMessage, DownloadsAndBooking, FAQAndJourney, MediaAndTestimonials, TopicsAndPlatforms } from '../sections/ContentSections'
+import { Authority, Ecosystem, FinalCTA, GuestTestimonials, HostTestimonials, NextStep, Ranking, Relationships, Represents, Show, Value, Work } from '../sections/ContentSections'
 import { Hero } from '../sections/Hero'
-import { TrustStrip } from '../sections/TrustStrip'
 
 export function HomePage() {
-  return <main><Hero /><TrustStrip /><AboutAndMessage /><TopicsAndPlatforms /><MediaAndTestimonials /><DownloadsAndBooking /><FAQAndJourney /></main>
+  return <main><Hero /><Represents /><Work /><Ecosystem /><Authority /><Show /><Ranking /><HostTestimonials /><GuestTestimonials /><Relationships /><Value /><NextStep /><FinalCTA /></main>
 }

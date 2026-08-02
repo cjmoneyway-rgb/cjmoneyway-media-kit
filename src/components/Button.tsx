@@ -10,11 +10,11 @@ type LinkProps = SharedProps & AnchorHTMLAttributes<HTMLAnchorElement> & { href:
 type ButtonProps = NativeButtonProps | LinkProps
 
 export function Button(props: ButtonProps) {
-  if (props.href) {
+  if ('href' in props && props.href) {
     const { children, variant = 'primary', ...linkProps } = props
     return <a className={`button button--${variant}`} {...linkProps}>{children}</a>
   }
 
-  const { children, variant = 'primary', ...buttonProps } = props
+  const { children, variant = 'primary', ...buttonProps } = props as NativeButtonProps
   return <button className={`button button--${variant}`} {...buttonProps}>{children}</button>
 }

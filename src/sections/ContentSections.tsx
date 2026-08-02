@@ -1,43 +1,66 @@
-import { CTAGroup } from '../components/CTAGroup'
-import { DownloadCard } from '../components/DownloadCard'
+import { Button } from '../components/Button'
 import { PlatformCard } from '../components/PlatformCard'
 import { SectionHeading } from '../components/SectionHeading'
-import { TestimonialCard } from '../components/TestimonialCard'
-import { downloads, faqs, platforms, sections, testimonials, topics } from '../data/mediaKitContent'
+import { authorityMetrics, conversionPathways, ecosystem, podcastRanking, principles, sections, showCopy, strategicRelationships, testimonialCategories, valueStatements, workAreas } from '../data/mediaKitContent'
+import type { SectionContent, TestimonialCategory } from '../types/content'
 
-export function AboutAndMessage() {
-  return (
-    <section className="split-section section" id={sections.about.id}>
-      <SectionHeading {...sections.about} />
-      <div className="split-section__body"><p>{sections.about.description}</p><aside><p className="eyebrow">{sections.message.eyebrow}</p><blockquote>“{sections.message.title}”</blockquote></aside></div>
-    </section>
-  )
+function Intro({ content, align = 'left' }: { content: SectionContent; align?: 'left' | 'center' }) {
+  return <SectionHeading eyebrow={content.eyebrow} title={content.title} description={content.description} align={align} />
 }
 
-export function TopicsAndPlatforms() {
-  return <>
-    <section className="section section--navy" id={sections.topics.id}><SectionHeading {...sections.topics} /><div className="card-grid">{topics.map((item, i) => <PlatformCard key={i} {...item} />)}</div></section>
-    <section className="section" id={sections.show.id}><SectionHeading eyebrow="Platforms & Publishing" title="Approved Platform Information Required" description="Approved Platform Overview Required" /><div className="card-grid">{platforms.map((item, i) => <PlatformCard key={i} {...item} />)}</div></section>
-  </>
+export function Represents() {
+  const content = sections.represents
+  return <section className="section philosophy" id={content.id} data-status={content.status}><Intro content={content} align="center" /><ul className="principle-list">{principles.map((item) => <li key={item}>{item}</li>)}</ul></section>
 }
 
-export function MediaAndTestimonials() {
-  return <>
-    <section className="media-banner section" id={sections.media.id}><SectionHeading {...sections.media} /><div className="media-placeholder">Approved Media Appearance Visual Required</div></section>
-    <section className="section section--soft" id={sections.testimonials.id}><SectionHeading {...sections.testimonials} align="center" /><div className="testimonial-grid">{testimonials.map((item, i) => <TestimonialCard key={i} {...item} />)}</div></section>
-  </>
+export function Work() {
+  const content = sections.work
+  return <section className="section" id={content.id} data-status={content.status}><Intro content={content} /><div className="card-grid card-grid--two">{workAreas.map((item) => <PlatformCard key={item.title} {...item} />)}</div></section>
 }
 
-export function DownloadsAndBooking() {
-  return <>
-    <section className="section" id={sections.downloads.id}><SectionHeading {...sections.downloads} /><div className="download-list">{downloads.map((item) => <DownloadCard key={item.title} {...item} />)}</div></section>
-    <section className="booking section" id={sections.booking.id}><div><SectionHeading {...sections.booking} /><CTAGroup primaryHref="mailto:placeholder@example.com" primaryLabel="Approved Contact Required" secondaryHref="#faq" secondaryLabel="Review FAQ" /></div><div className="booking__mark" aria-hidden="true">CJ</div></section>
-  </>
+export function Ecosystem() {
+  const content = sections.ecosystem
+  return <section className="section ecosystem" id={content.id} data-status={content.status}><Intro content={content} align="center" /><div className="ecosystem__hub">CJ Moneyway Media™<span>Master Enterprise</span></div><div className="ecosystem__network">{ecosystem.map((item) => <article key={item.category}><p className="eyebrow">{item.category}</p><h3>{item.name}</h3></article>)}</div></section>
 }
 
-export function FAQAndJourney() {
-  return <>
-    <section className="section faq" id={sections.faq.id}><SectionHeading {...sections.faq} />{faqs.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</section>
-    <section className="journey section" id={sections.journey.id}><SectionHeading {...sections.journey} align="center" /><CTAGroup primaryHref="#top" primaryLabel="Return to Top" /></section>
-  </>
+export function Authority() {
+  const content = sections.authority
+  return <section className="section authority" id={content.id} data-status={content.status}><Intro content={content} /><div className="authority-grid">{authorityMetrics.map((metric) => <article key={metric.label}><strong>{metric.value}</strong><span>{metric.label}</span></article>)}</div></section>
+}
+
+export function Show() {
+  const content = sections.show
+  return <section className="section show-section" id={content.id} data-status={content.status}><Intro content={content} /><div className="show-copy"><div><p>{showCopy.introduction}</p><p>{showCopy.impact}</p></div><div><h3>Why the platform matters</h3><ul className="check-list">{showCopy.roles.map((item) => <li key={item}>{item}</li>)}</ul></div></div><div className="tag-list" aria-label="Show themes">{showCopy.themes.map((theme) => <span key={theme}>{theme}</span>)}</div></section>
+}
+
+export function Ranking() {
+  const content = sections.ranking
+  return <section className="section ranking" id={content.id} data-status={content.status}><Intro content={content} /><div className="ranking__proof"><div><strong>{podcastRanking.consecutiveDays}</strong><span>Consecutive Days</span></div><div><strong>Top 50</strong><span>{podcastRanking.chart}</span></div><div><strong>#{podcastRanking.documentedRunPeak}</strong><span>Peak during verified run</span></div></div><p className="ranking__summary">{podcastRanking.summary}</p><details><summary>View the verified daily sequence</summary><ol className="ranking-sequence">{podcastRanking.sequence.map((item) => <li key={item.date}><span>{item.date}</span><strong>#{item.rank}</strong></li>)}</ol></details></section>
+}
+
+function TestimonialSection({ category }: { category: TestimonialCategory }) {
+  return <section className="section testimonial-category" id={category.id} data-status={category.status}><SectionHeading eyebrow={category.eyebrow} title={category.title} description={category.description} /><div className="testimonial-evidence"><div><p className="placeholder-label">{category.quotePlaceholder}</p>{category.sources.length > 0 && <><h3>Approved source programs</h3><ul>{category.sources.map((source) => <li key={source}>{source}</li>)}</ul></>}</div><div><h3>Supported feedback themes</h3><div className="tag-list">{category.themes.map((theme) => <span key={theme}>{theme}</span>)}</div></div></div></section>
+}
+
+export function HostTestimonials() { return <TestimonialSection category={testimonialCategories[0]} /> }
+export function GuestTestimonials() { return <TestimonialSection category={testimonialCategories[1]} /> }
+
+export function Relationships() {
+  const content = sections.relationships
+  return <section className="section relationships" id={content.id} data-status={content.status}><Intro content={content} /><div className="relationship-grid">{strategicRelationships.map((item) => <article key={item.name}><p className="eyebrow">{item.organization}</p><h3>{item.name}</h3><ul>{item.roles.map((role) => <li key={role}>{role}</li>)}</ul></article>)}</div><p className="section-note">Relationships shown are selective and do not imply sponsorship, ownership, employment, formal endorsement, agency representation, or client status.</p></section>
+}
+
+export function Value() {
+  const content = sections.value
+  return <section className="section value" id={content.id} data-status={content.status}><Intro content={content} /><div className="value-grid">{valueStatements.map((item, index) => <article key={item}><span>0{index + 1}</span><h3>{item}</h3></article>)}</div></section>
+}
+
+export function NextStep() {
+  const content = sections.nextStep
+  return <section className="section next-step" id={content.id} data-status={content.status}><Intro content={content} align="center" /><div className="card-grid card-grid--two">{conversionPathways.map((item) => <PlatformCard key={item.title} {...item} />)}</div></section>
+}
+
+export function FinalCTA() {
+  const content = sections.finalCta
+  return <section className="section final-cta" id={content.id} data-status={content.status}><Intro content={content} align="center" /><div className="cta-group"><Button type="button" disabled>Approved Booking Link Required</Button><Button href="#ecosystem" variant="secondary">Explore CJ Moneyway Media™</Button></div></section>
 }

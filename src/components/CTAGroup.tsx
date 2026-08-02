@@ -1,12 +1,14 @@
 import { Button } from './Button'
+import type { CallToAction } from '../types/content'
 
-type CTAGroupProps = { primaryHref: string; primaryLabel: string; secondaryHref?: string; secondaryLabel?: string }
+type CTAGroupProps = { actions: CallToAction[] }
 
-export function CTAGroup({ primaryHref, primaryLabel, secondaryHref, secondaryLabel }: CTAGroupProps) {
+export function CTAGroup({ actions }: CTAGroupProps) {
   return (
     <div className="cta-group">
-      <Button href={primaryHref}>{primaryLabel}</Button>
-      {secondaryHref && secondaryLabel && <Button href={secondaryHref} variant="secondary">{secondaryLabel}</Button>}
+      {actions.map((action, index) => action.href
+        ? <Button href={action.href} variant={index === 0 ? 'primary' : 'secondary'} key={action.label}>{action.label}</Button>
+        : <Button type="button" variant={index === 0 ? 'primary' : 'secondary'} disabled key={action.label}>{action.label}</Button>)}
     </div>
   )
 }
