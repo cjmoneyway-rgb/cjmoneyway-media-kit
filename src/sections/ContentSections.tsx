@@ -6,7 +6,7 @@ import { SectionHeading } from '../components/SectionHeading'
 import { TestimonialCard } from '../components/TestimonialCard'
 import { approvedLinks, authorityMetrics, conversionPathways, ecosystem, mediaDownloads, podcastRanking, principles, sections, showCopy, strategicRelationships, testimonialCategories, valueStatements, workAreas } from '../data/mediaKitContent'
 import type { SectionContent, TestimonialCategory } from '../types/content'
-
+import enterprisePortrait from '../assets/cj/enterprise-portrait.png'
 function Intro({ content, align = 'left' }: { content: SectionContent; align?: 'left' | 'center' }) {
   return <SectionHeading eyebrow={content.eyebrow} title={content.title} description={content.description} align={align} />
 }
@@ -23,7 +23,8 @@ export function Work() {
 
 export function Ecosystem() {
   const content = sections.ecosystem
-  return <section className="section ecosystem" id={content.id} data-status={content.status}><Intro content={content} align="center" /><div className="ecosystem__hub">CJ Moneyway Media™<span>Master Enterprise</span></div><div className="ecosystem__network">{ecosystem.map((item) => <article key={item.category}><p className="eyebrow">{item.category}</p><h3>{item.name}</h3></article>)}</div></section>
+  return <section className="section ecosystem" id={content.id} data-status={content.status}><Intro content={content} align="center" /><div className="ecosystem__composition"><div className="ecosystem__architecture"><div className="ecosystem__hub">CJ Moneyway Media™<span>Master Enterprise</span></div><div className="ecosystem__network">{ecosystem.map((item) => <article key={item.category}><p className="eyebrow">{item.category}</p><h3>{item.name}</h3></article>)}</div></div><figure className="ecosystem__portrait"><img src={enterprisePortrait} alt="CJ Moneyway standing outside a modern illuminated building in navy and gold attire." width="1584" height="993" loading="lazy" decoding="async" /><figcaption>Executive portrait</figcaption></figure></div></section>
+}
 }
 
 export function Authority() {
