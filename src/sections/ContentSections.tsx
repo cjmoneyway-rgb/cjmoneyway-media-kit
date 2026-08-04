@@ -6,7 +6,7 @@ import { SectionHeading } from '../components/SectionHeading'
 import { TestimonialCard } from '../components/TestimonialCard'
 import { approvedLinks, authorityMetrics, conversionPathways, ecosystem, mediaDownloads, podcastRanking, principles, sections, showCopy, strategicRelationships, testimonialCategories, valueStatements, workAreas } from '../data/mediaKitContent'
 import type { SectionContent, TestimonialCategory } from '../types/content'
-import enterprisePortrait from '../assets/cj/enterprise-portrait.jpg'
+import enterprisePortrait from '../assets/cj/enterprise-portrait.png'
 
 function Intro({ content, align = 'left' }: { content: SectionContent; align?: 'left' | 'center' }) {
   return <SectionHeading eyebrow={content.eyebrow} title={content.title} description={content.description} align={align} />
