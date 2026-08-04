@@ -3,6 +3,7 @@ import { Button } from '../components/Button'
 import { DownloadCard } from '../components/DownloadCard'
 import { PlatformCard } from '../components/PlatformCard'
 import { SectionHeading } from '../components/SectionHeading'
+import { TestimonialCard } from '../components/TestimonialCard'
 import { approvedLinks, authorityMetrics, conversionPathways, ecosystem, mediaDownloads, podcastRanking, principles, sections, showCopy, strategicRelationships, testimonialCategories, valueStatements, workAreas } from '../data/mediaKitContent'
 import type { SectionContent, TestimonialCategory } from '../types/content'
 
@@ -41,7 +42,7 @@ export function Ranking() {
 }
 
 function TestimonialSection({ category }: { category: TestimonialCategory }) {
-  return <section className="section testimonial-category" id={category.id} data-status={category.status}><SectionHeading eyebrow={category.eyebrow} title={category.title} description={category.description} /><div className="testimonial-evidence"><div><p className="placeholder-label">{category.quotePlaceholder}</p>{category.sources.length > 0 && <><h3>Approved source programs</h3><ul>{category.sources.map((source) => <li key={source}>{source}</li>)}</ul></>}</div><div><h3>Supported feedback themes</h3><div className="tag-list">{category.themes.map((theme) => <span key={theme}>{theme}</span>)}</div></div></div></section>
+  return <section className="section testimonial-category" id={category.id} data-status={category.status}><SectionHeading eyebrow={category.eyebrow} title={category.title} description={category.description} /><div className="testimonial-evidence"><TestimonialCard {...category.testimonial} /><aside className="testimonial-proof" aria-label="Review verification"><p className="eyebrow">Source verification</p><p>{category.sourceNote}</p>{category.supportingProof && <p className="testimonial-proof__metric"><strong>{category.supportingProof.value}</strong><span>{category.supportingProof.label}</span></p>}<h3>Review themes</h3><div className="tag-list">{category.themes.map((theme) => <span key={theme}>{theme}</span>)}</div></aside></div></section>
 }
 
 export function HostTestimonials() { return <TestimonialSection category={testimonialCategories[0]} /> }

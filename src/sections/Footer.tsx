@@ -1,7 +1,7 @@
 import { approvedLinks } from '../data/mediaKitContent'
 
 const footerLinks = [
-  ['Website', approvedLinks.website], ['Podcast', approvedLinks.podcast], ['Speaking', approvedLinks.oneSheet], ['LinkedIn', approvedLinks.linkedin],
+  ['Website', approvedLinks.website], ['Podcast', approvedLinks.podcast], ['Speaking', approvedLinks.speakerHub], ['LinkedIn', approvedLinks.linkedin],
   ['YouTube', approvedLinks.youtube], ['Instagram', approvedLinks.instagram], ['TikTok', approvedLinks.tiktok], ['X', approvedLinks.x],
 ]
 

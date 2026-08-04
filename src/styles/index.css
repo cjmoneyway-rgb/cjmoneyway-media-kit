@@ -137,9 +137,13 @@ h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; line
 .ranking-sequence { display: grid; grid-template-columns: repeat(7, 1fr); gap: .5rem; padding: 0 0 1rem; list-style: none; }
 .ranking-sequence li { display: flex; flex-direction: column; padding: .75rem; background: white; font-size: .72rem; }
 .testimonial-category:nth-of-type(even) { background: var(--color-soft); }
-.testimonial-evidence { display: grid; grid-template-columns: .8fr 1.2fr; gap: 3rem; }
-.testimonial-evidence ul { padding-left: 1.25rem; columns: 2; }
-.placeholder-label { padding: 2rem; border-left: 2px solid var(--color-gold); background: white; color: var(--color-muted); font-family: var(--font-display); font-size: 1.6rem; }
+.testimonial-evidence { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(16rem, .65fr); gap: clamp(1.5rem, 5vw, 4rem); align-items: start; }
+.testimonial-evidence .testimonial-card { border: 0; border-left: 2px solid var(--color-gold); }
+.testimonial-proof { padding-top: 1rem; }
+.testimonial-proof > p:not(.eyebrow, .testimonial-proof__metric) { color: var(--color-muted); }
+.testimonial-proof__metric { display: flex; align-items: center; gap: 1rem; margin: 2rem 0; padding: 1.25rem 0; border-top: var(--border-subtle); border-bottom: var(--border-subtle); }
+.testimonial-proof__metric strong { color: var(--color-navy); font-family: var(--font-display); font-size: 3rem; font-weight: 400; line-height: 1; }
+.testimonial-proof__metric span { color: var(--color-muted); font-size: .7rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
 .relationship-grid, .value-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
 .relationship-grid article { padding: 2rem; border: var(--border-subtle); }
 .relationship-grid ul { display: flex; flex-wrap: wrap; gap: .5rem; padding: 0; list-style: none; }

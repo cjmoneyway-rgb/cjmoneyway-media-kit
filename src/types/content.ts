@@ -53,10 +53,11 @@ export type TestimonialCategory = {
   eyebrow: string
   title: string
   description: string
-  sources: string[]
   themes: string[]
-  quotePlaceholder: string
-  status: 'placeholder'
+  testimonial: Testimonial
+  sourceNote: string
+  supportingProof?: Metric
+  status: 'verified'
 }
 
 export type StrategicRelationship = {
