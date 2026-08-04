@@ -102,6 +102,8 @@ h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; line
 .journey .card-grid { width: 100%; text-align: left; }
 .ecosystem { overflow: hidden; background: var(--color-navy); color: white; }
 .ecosystem .section-heading__description { color: rgb(255 255 255 / 65%); }
+.ecosystem__composition { display: grid; grid-template-columns: minmax(0, 2.15fr) minmax(15rem, .85fr); gap: clamp(1.5rem, 3vw, 3rem); align-items: stretch; }
+.ecosystem__architecture { display: flex; min-width: 0; flex-direction: column; justify-content: center; }
 .ecosystem__hub { position: relative; z-index: 1; display: flex; width: min(21rem, 80vw); min-height: 10rem; align-items: center; justify-content: center; flex-direction: column; margin: 0 auto 3rem; border: 1px solid var(--color-gold); color: var(--color-gold-light); font-family: var(--font-display); font-size: 2rem; text-align: center; }
 .ecosystem__hub span { margin-top: .5rem; font-family: var(--font-body); font-size: .6rem; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
 .ecosystem__network { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgb(255 255 255 / 18%); border: 1px solid rgb(255 255 255 / 18%); }
